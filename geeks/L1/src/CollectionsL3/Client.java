@@ -65,7 +65,19 @@ public class Client {
         q2.add("sai");
         q2.add("harsh");
         q2.add("purvi");
-        System.out.println(q2);
+        q2.add("lovely");
+        q2.add("raventh");
+        q2.add("arun");
+        q2.add("atri");
+        q2.add("sathish");
+        q2.add("hod");
+        while(!q2.isEmpty()){
+            System.out.println(q2.poll());
+        }
+//        for(String n:q2){
+//            System.out.println(q2.poll());
+//        }
+        System.out.println("elements of priorioty queue are"+q2);
 
         Collections.sort(l1,new Comparator<String>() {
 
