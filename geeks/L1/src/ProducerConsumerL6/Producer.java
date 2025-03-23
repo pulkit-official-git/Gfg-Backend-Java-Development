@@ -10,10 +10,10 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         while (true) {
-            synchronized (store){
+//            synchronized (store){
                 if(store.getX().size()<store.getMaxSize()){
                     store.addItem(new Items());
-            }
+//            }
 
         }
         }

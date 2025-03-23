@@ -15,26 +15,26 @@ public class Client {
         List<Future<?>> futures = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
-//            Future<?> future=ex.submit(new Producer(store));
-//            futures.add(future);
-            ex.submit(new Producer(store));
+            Future<?> future=ex.submit(new Producer(store));
+            futures.add(future);
+//            ex.execute(new Producer(store));
         }
 
         for (int i = 1; i <= 20; i++) {
-//            Future<?> future=ex.submit(new Consumer(store));
-//            System.out.println("Consumer section");
-//            futures.add(future);
-            ex.submit(new Consumer(store));
+            Future<?> future=ex.submit(new Consumer(store));
+            System.out.println("Consumer section");
+            futures.add(future);
+//            ex.execute(new Consumer(store));
         }
-//        for (Future<?> future : futures) {
-//            try {
-//                System.out.println(future.get());  // Blocks and retrieves any exception thrown inside run()
-//            } catch (ExecutionException e) {
-//                System.err.println("Task Exception: " + e.getCause());  // Print the actual exception
-//            } catch (InterruptedException e) {
-//                System.err.println("Task was interrupted: " + e.getMessage());
-//            }
-//        }
+        for (Future<?> future : futures) {
+            try {
+                System.out.println(future.get());  // Blocks and retrieves any exception thrown inside run()
+            } catch (ExecutionException e) {
+                System.err.println("Task Exception: " + e.getCause());  // Print the actual exception
+            } catch (InterruptedException e) {
+                System.err.println("Task was interrupted: " + e.getMessage());
+            }
+        }
         ex.shutdown();
 
     }

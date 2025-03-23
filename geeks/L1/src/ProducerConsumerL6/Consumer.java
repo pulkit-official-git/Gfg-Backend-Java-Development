@@ -11,11 +11,11 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         while(true){
-            synchronized (store){
+//            synchronized (store){
                 if(store.getX().size()>0){
                     store.removeItem();
                 }
-            }
+//            }
 
         }
 
