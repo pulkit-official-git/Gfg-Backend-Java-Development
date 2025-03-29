@@ -5,19 +5,21 @@ import com.example.gfg_rest_api.models.User;
 
 import java.util.Date;
 
-public class UserRequest {
+public class UserUpdateRequest {
     private String name;
     private String email;
     private String password;
     private Integer age;
     private Gender gender;
+    private Date updatedAt;
+    private Date createdAt;
 
-    public Gender getGender() {
-        return gender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -26,14 +28,6 @@ public class UserRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
@@ -52,6 +46,30 @@ public class UserRequest {
         this.age = age;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public User to(){
         User user = new User();
         user.setName(this.name);
@@ -59,6 +77,7 @@ public class UserRequest {
         user.setPassword(this.password);
         user.setAge(this.age);
         user.setGender(this.gender);
+        user.setUpdatedAt(new Date());
         user.setCreatedAt(new Date());
         return user;
     }

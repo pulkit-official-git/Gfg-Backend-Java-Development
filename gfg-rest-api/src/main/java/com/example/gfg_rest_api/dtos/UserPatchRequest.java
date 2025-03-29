@@ -1,32 +1,13 @@
 package com.example.gfg_rest_api.dtos;
 
-import com.example.gfg_rest_api.Gender;
 import com.example.gfg_rest_api.models.User;
 
 import java.util.Date;
 
-public class UserRequest {
+public class UserPatchRequest {
     private String name;
     private String email;
     private String password;
-    private Integer age;
-    private Gender gender;
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getEmail() {
         return email;
@@ -44,22 +25,20 @@ public class UserRequest {
         this.password = password;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getName() {
+        return name;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setName(String name) {
+        this.name = name;
     }
-
     public User to(){
         User user = new User();
         user.setName(this.name);
         user.setEmail(this.email);
         user.setPassword(this.password);
-        user.setAge(this.age);
-        user.setGender(this.gender);
-        user.setCreatedAt(new Date());
+        user.setUpdatedAt(new Date());
+        user.setCreatedAt(user.getCreatedAt());
         return user;
     }
 }

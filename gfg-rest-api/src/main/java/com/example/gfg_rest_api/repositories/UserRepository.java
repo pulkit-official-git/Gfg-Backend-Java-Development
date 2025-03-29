@@ -21,6 +21,23 @@ public class UserRepository {
     }
 
     public User getUser(Integer id) {
+        if(!users.containsKey(id)) {
+            return null;
+        }
         return users.get(id);
+    }
+
+    public User update(Integer id, User user) {
+        if(!users.containsKey(id)) {
+            return null;
+        }
+        user.setId(id);
+        users.put(user.getId(),user);
+        return user;
+
+    }
+
+    public void delete(Integer id) {
+        users.remove(id);
     }
 }

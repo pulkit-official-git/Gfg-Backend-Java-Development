@@ -13,6 +13,7 @@ public class User {
     private Integer age;
     private Gender gender;
     private Date updatedAt;
+    private Date createdAt;
 
     public Integer getId() {
         return id;
@@ -78,5 +79,17 @@ public class User {
         this.name = name;
     }
 
-    private Date createdAt;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                ", updatedAt=" + updatedAt +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }
