@@ -1,10 +1,12 @@
 package com.example.gfg_rest_api.controllers;
 
 import com.example.gfg_rest_api.dtos.*;
+import com.example.gfg_rest_api.exceptions.UserNotFoundException;
 import com.example.gfg_rest_api.models.User;
 import com.example.gfg_rest_api.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
+    
 
     public Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -47,12 +50,21 @@ public class UserController {
     @PatchMapping("user/partial/update/{userId}")
     public UserUpdateResponse updateUser(@PathVariable("userId") Integer id, @RequestBody UserPatchRequest userPatchRequest){
         User user = userService.updatePatch(id,userPatchRequest);
-        logger.info("updated patch user: {}"+user);
+        logger.info("updated patch user: {}",user);
         return UserUpdateResponse.fromUser(user);
     }
 
     @DeleteMapping("user/{userId}")
-    public void deleteUser(@PathVariable("userId") Integer id){
-        userService.delete(id);
+    public ResponseEntity deleteUser(@PathVariable("userId") Integer id){
+        try {
+            userService.delete(id);
+            return new ResponseEntity(HttpStatus.OK);
+        }catch (UserNotFoundException e){
+            logger.error("Error for user Id {}",id);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            logger.error("Error is deleting user");
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

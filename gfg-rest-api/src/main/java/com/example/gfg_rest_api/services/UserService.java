@@ -60,6 +60,13 @@ public class UserService {
     }
 
     public void delete(Integer id) {
-        userRepository.delete(id);
+        try{
+            int x = 1/0;
+            userRepository.delete(id);
+        }catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        }
+
     }
 }

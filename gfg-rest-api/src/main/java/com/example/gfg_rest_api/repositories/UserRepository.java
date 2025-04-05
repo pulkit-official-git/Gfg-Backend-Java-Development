@@ -2,6 +2,7 @@ package com.example.gfg_rest_api.repositories;
 
 
 
+import com.example.gfg_rest_api.exceptions.UserNotFoundException;
 import com.example.gfg_rest_api.models.User;
 
 import java.util.HashMap;
@@ -37,7 +38,11 @@ public class UserRepository {
 
     }
 
-    public void delete(Integer id) {
-        users.remove(id);
+    public void delete(Integer id){
+            if(!users.containsKey(id)) {
+                throw new UserNotFoundException("user not found");
+            }
+            users.remove(id);
+
     }
 }
