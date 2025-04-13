@@ -23,4 +23,8 @@ public class BookService {
     public List<Book> getAllBooks() throws SQLException {
         return this.bookRepository.getAllBooks();
     }
+
+    public Book getBookById(int bookId) throws SQLException {
+        return this.bookRepository.getBookById(bookId);
+    }
 }

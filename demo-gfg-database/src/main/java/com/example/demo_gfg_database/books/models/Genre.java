@@ -4,5 +4,6 @@ public enum Genre {
     MATHS,
     SCIENCE,
     THRILLER,
-    HISTORY
+    HISTORY,
+    FICTION
 }

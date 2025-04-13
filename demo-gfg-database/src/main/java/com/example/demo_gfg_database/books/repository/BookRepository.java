@@ -19,7 +19,7 @@ public class BookRepository {
     Logger logger = LoggerFactory.getLogger(BookRepository.class);
 
 //    @Autowired
-    private final DatabaseRepository databaseRepository;
+    private DatabaseRepository databaseRepository;
 
     public BookRepository(DatabaseRepository databaseRepository) throws SQLException {
         this.databaseRepository = databaseRepository;
@@ -96,5 +96,33 @@ public class BookRepository {
             books.add(book);
         }
         return books;
+    }
+
+    public Book getBookById(int bookId) throws SQLException {
+        Book book = null;
+        String sql = "select * from book where id = ?";
+        PreparedStatement preparedStatement = getConnection().prepareStatement(sql);
+        preparedStatement.setInt(1, bookId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            String title = resultSet.getString("title");
+            String author = resultSet.getString("author");
+            String authorEmail = resultSet.getString("authorEmail");
+            Genre genre = Genre.valueOf(resultSet.getString("genre"));
+            Date createdOn = resultSet.getDate("createdOn");
+            Date updatedOn = resultSet.getDate("updatedOn");
+            int id = resultSet.getInt("id");
+
+            book = Book.builder()
+                    .id(id)
+                    .title(title)
+                    .author(author)
+                    .authorEmail(authorEmail)
+                    .genre(genre)
+                    .createdON(createdOn)
+                    .updatedON(updatedOn)
+                    .build();
+        }
+        return book;
     }
 }

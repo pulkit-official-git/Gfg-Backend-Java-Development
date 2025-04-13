@@ -5,10 +5,7 @@ import com.example.demo_gfg_database.books.models.Book;
 import com.example.demo_gfg_database.books.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -33,5 +30,10 @@ public class BookController {
     public List<Book> getAllBooks() throws SQLException {
 
         return this.bookService.getAllBooks();
+    }
+
+    @GetMapping("/book/{id}")
+    public Book getBookById(@PathVariable("id")int bookId) throws SQLException {
+        return this.bookService.getBookById(bookId);
     }
 }
