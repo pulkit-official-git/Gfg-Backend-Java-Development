@@ -26,7 +26,7 @@ public class DemoConfig {
 
         UserDetails user2 = User.builder()
                 .username("user")
-                .password("$2a$12$UMBy9vmAqBgXRmnVWrY65.trrrdAwObUy1X/2gb1o2Ymkv6ULelcS")
+                .password(passwordEncoder().encode("user@123"))
                 .authorities("USER")
                 .build();
 

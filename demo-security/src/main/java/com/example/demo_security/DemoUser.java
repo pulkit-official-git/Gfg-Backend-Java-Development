@@ -39,5 +39,4 @@ public class DemoUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-
 }
