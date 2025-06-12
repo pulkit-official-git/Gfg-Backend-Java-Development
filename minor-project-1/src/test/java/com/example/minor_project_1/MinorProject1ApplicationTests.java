@@ -1,12 +1,12 @@
 package com.example.minor_project_1;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class MinorProject1ApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 

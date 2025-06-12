@@ -2,7 +2,6 @@ package com.example.minor_project_1.dtos;
 
 import com.example.minor_project_1.models.Book;
 import com.example.minor_project_1.models.Student;
-import jakarta.persistence.Entity;
 import lombok.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StudentCreateResponse {
+public class GetStudentDetailResponse {
 
     private Student student;
 

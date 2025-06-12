@@ -1,6 +1,7 @@
 package com.example.minor_project_1.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,15 +31,18 @@ public class Book {
     @Enumerated(EnumType.ORDINAL)
     private Genre genre;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
+    @JsonIgnoreProperties("bookList")
     private Author author;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
+    @JsonIgnoreProperties("bookList")
     private Student student;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnoreProperties("book")
     List<Transaction> transactionList;
 
     @CreationTimestamp
